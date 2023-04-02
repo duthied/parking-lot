@@ -1,15 +1,30 @@
 require 'spec_helper'
 require_relative '../lib/lot'
 
-describe 'lot' do
-  it 'should initialize' do
-    expect(Lot).to receive(:new)
-    obj = Lot.new
-  end 
-end
+# > bundle exec rspec
 
-# describe 'addOne' do
-#   it 'should add 1 to what was passed in' do
-#     expect(addOne(1)).to eq 2
-#   end
-# end
+describe Lot do
+
+  describe ".park_car" do
+
+    context "when there is space" do
+      let(:lot) { Lot.new(1) }
+
+      it "returns a parking pass" do
+        expect(lot.park_car('abc 123')).not_to eq nil
+      end
+
+      it "sets the vacancy" do
+        expect(lot.has_vacancy?).to eq true
+        lot.park_car('abc 123')
+        expect(lot.has_vacancy?).to eq false
+      end
+
+      it "reports the accurate space count" do
+        expect(lot.vacant_space_count).to eq 1
+        lot.park_car('abc 123')
+        expect(lot.vacant_space_count).to eq 0
+      end
+    end
+  end
+end
