@@ -5,9 +5,9 @@ require_relative '../lib/pay_lot'
 
 describe PayLot do
 
-  describe ".park_car" do
+  describe '.park_car' do
 
-    context "when there is space" do
+    context 'when there is space' do
       # let(:lot) { PayLot.new(1) }
 
       # it "returns a parking pass" do

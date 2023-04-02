@@ -20,7 +20,7 @@ module Lot
 
   def list_cars
     if @parked_cars.size == 0
-      puts "The lot is empty!"
+      puts 'The lot is empty!'
     end
     @parked_cars.each do | key, value |
       puts "#{key}"
