@@ -22,7 +22,7 @@ class Lot
   # takes a plate number and if there is capacity
   # returns a parking pass with the current timestamp
   def park_car(plate_number)
-    return nil unless @parked_cars.size <= @max_capacity
+    return nil unless @parked_cars.size < @max_capacity
 
     pp = ParkingPass.new Time.now(), plate_number # .to_json
     
