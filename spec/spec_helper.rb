@@ -3,5 +3,5 @@ RSpec.configure do |config|
 
   # Use the specified formatter
   config.formatter = :documentation 
-
+  config.add_formatter 'Fuubar'
 end
