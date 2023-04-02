@@ -3,7 +3,7 @@ require 'json'
 
 ParkingPass = Struct.new(:plate_number, :time)
 
-class Lot
+class SimpleLot
 
   def initialize(max_capacity = 10)
     @max_capacity = max_capacity
@@ -19,6 +19,9 @@ class Lot
   end
 
   def list_cars
+    if @parked_cars.size == 0
+      puts "The lot is empty!"
+    end
     @parked_cars.each do | key, value |
       puts "#{key}"
     end

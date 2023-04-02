@@ -1,14 +1,14 @@
 require 'spec_helper'
-require_relative '../lib/lot'
+require_relative '../lib/simple_lot'
 
 # > bundle exec rspec
 
-describe Lot do
+describe SimpleLot do
 
   describe ".park_car" do
 
     context "when there is space" do
-      let(:lot) { Lot.new(1) }
+      let(:lot) { SimpleLot.new(1) }
 
       it "returns a parking pass" do
         expect(lot.park_car('abc 123')).not_to eq nil
