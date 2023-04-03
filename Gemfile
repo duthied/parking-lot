@@ -9,4 +9,5 @@ group :development, :test do
   gem 'byebug'
   gem 'fuubar'
   gem 'simplecov'
+  gem 'simplecov-cobertura'
 end  
