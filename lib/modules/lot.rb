@@ -12,7 +12,14 @@ module Lot
   end
 
   def vacant_space_count
-    return (@parked_cars.size - @max_capacity).abs
+    begin
+      return (@parked_cars.size - @max_capacity).abs
+
+    rescue => e
+      puts "error: #{e}"
+      puts "error: #{e.backtrace}"
+    end
+    
   end
 
   def has_vacancy?
