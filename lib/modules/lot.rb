@@ -3,7 +3,8 @@ require 'json'
 
 module Lot
   
-  ParkingPass = Struct.new(:plate_number, :time)
+  ParkingPass = Struct.new(:plate_number, :time_stamp)
+  ParkingInvoice = Struct.new(:plate_number, :fee)
 
   def initialize(max_capacity = 10)
     @max_capacity = max_capacity
@@ -32,11 +33,11 @@ module Lot
   def park_car(plate_number)
     return nil unless @parked_cars.size < @max_capacity
 
-    pp = ParkingPass.new plate_number, Time.now()  # .to_json
+    pp = ParkingPass.new plate_number, Time.now().to_s 
     
     # add new parking pass to the hash
-    @parked_cars[plate_number] = pp.to_json
+    @parked_cars[plate_number] = pp
     # return the parking pass
-    return pp.to_json
+    return pp
   end
 end
