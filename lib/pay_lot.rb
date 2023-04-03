@@ -20,6 +20,9 @@ class PayLot
     # multiply that by $0.01
     fee = (elapsed_seconds * 0.01).to_f
 
+    # remove the car from the lot
+    @parked_cars.delete(plate_number)
+
     # return the time spent and cost (new struct?)
     return Lot::ParkingInvoice.new(plate_number, fee)
   end
