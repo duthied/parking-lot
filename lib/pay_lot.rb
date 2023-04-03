@@ -9,21 +9,30 @@ class PayLot
   # provide the cost based on the time stamp of the parking pass
   # for this user
   def exit_lot(plate_number)
-    # fetch parking pass for the plate number
-    parking_pass = @parked_cars[plate_number]
-    return nil if parking_pass.nil?
 
-    # get number of seconds from timestamp
-    start_time = Time.parse(parking_pass.time_stamp)
-    end_time = Time.now
-    elapsed_seconds = ((end_time - start_time) * 24 * 60 * 60).to_i
-    # multiply that by $0.01
-    fee = (elapsed_seconds * 0.01).to_f
+    begin
+      # fetch parking pass for the plate number
+      parking_pass = @parked_cars[plate_number]
+      return nil if parking_pass.nil?
 
-    # remove the car from the lot
-    @parked_cars.delete(plate_number)
+      # get number of seconds from timestamp
+      start_time = Time.parse(parking_pass.time_stamp)
+      end_time = Time.now
+      elapsed_seconds = ((end_time - start_time) * 24 * 60 * 60).to_i
+      # multiply that by $0.01
+      fee = (elapsed_seconds * 0.01).to_f
 
-    # return the time spent and cost (new struct?)
-    return Lot::ParkingInvoice.new(plate_number, fee)
+      # remove the car from the lot
+      @parked_cars.delete(plate_number)
+
+      # return the time spent and cost (new struct?)
+      return Lot::ParkingInvoice.new(plate_number, fee)
+    
+    rescue => e
+      puts "error: #{e}"
+      puts "error: #{e.backtrace}"
+      
+    end
+    
   end
 end
