@@ -2,11 +2,11 @@
 
 source "https://rubygems.org"
 
-gem 'rspec'
 gem 'rake'
 
-
-# group :development, :test do
-gem 'byebug'
-gem 'fuubar'
-# end  
+group :development, :test do
+  gem 'rspec'
+  gem 'byebug'
+  gem 'fuubar'
+  gem 'simplecov'
+end  

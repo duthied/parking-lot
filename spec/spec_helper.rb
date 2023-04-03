@@ -5,3 +5,6 @@ RSpec.configure do |config|
   config.formatter = :documentation
   config.add_formatter 'Fuubar'
 end
+
+require 'simplecov'
+SimpleCov.start
